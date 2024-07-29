@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-eks-cluster-chaser"
-    key    = "jenkins/terraform.tfstate"
+    key    = "eks/terraform.tfstate"
     region = "ap-south-1"
   }
 }
