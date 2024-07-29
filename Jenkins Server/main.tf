@@ -11,7 +11,7 @@ module "vpc" {
   public_subnets          = var.public_subnets
   map_public_ip_on_launch = true
 
-#  enable_dns_hostnames = true
+  enable_dns_hostnames = true
 
   tags = {
     Name        = "Jenkins-VPC"
@@ -73,7 +73,7 @@ module "ec2_instance" {
   instance_type               = var.instance_type
   key_name                    = "cloud"
   monitoring                  = true
-  vpc_security_group_ids      = ["module.sg.this_security_group_id"]
+  vpc_security_group_ids      = [module.sg.security_group_id]
   subnet_id                   = module.vpc.public_subnets[0]
   associate_public_ip_address = true
   user_data                   = file("install-jenkins.sh")
